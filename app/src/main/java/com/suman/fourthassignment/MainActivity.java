@@ -3,6 +3,7 @@ package com.suman.fourthassignment;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.suman.fourthassignment.ui.Contacts;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -10,7 +11,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static List<Contacts> st = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

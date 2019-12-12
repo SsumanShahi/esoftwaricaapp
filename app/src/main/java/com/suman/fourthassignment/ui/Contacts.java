@@ -5,17 +5,17 @@ public class Contacts {
     private String address;
     private String gender;
     private String age;
-    private int imageID;
-    private String delimgID;
+//    private int imageID;
+//    private String delimgID;
 
     //constructor
-    public Contacts(String name, String address, String gender, String age, int imageID, String delimgID){
+    public Contacts(String name, String address, String gender, String age){
         this.name= name;
         this.address = address;
-        this.gender = gender;
+       this.gender = gender;
         this.age = age;
-        this.imageID = imageID;
-        this.delimgID = delimgID;
+//        this.imageID = imageID;
+//        this.delimgID = delimgID;
     }
 
     //Getter and Setter
@@ -58,23 +58,23 @@ public class Contacts {
         this.age = age;
     }
 
-    public int getImageID()
-    {
-        return imageID;
-    }
-
-    public void setImageID(int imageID)
-    {
-        this.imageID = imageID;
-
-    }
-
-    public String getDelimgID()
-    {
-        return delimgID;
-    }
-    public void setDelimgID(String delimgID)
-    {
-        this.delimgID =delimgID;
-    }
+//    public int getImageID()
+//    {
+//        return imageID;
+//    }
+//
+//    public void setImageID(int imageID)
+//    {
+//        this.imageID = imageID;
+//
+//    }
+//
+//    public String getDelimgID()
+//    {
+//        return delimgID;
+//    }
+//    public void setDelimgID(String delimgID)
+//    {
+//        this.delimgID =delimgID;
+//    }
 }

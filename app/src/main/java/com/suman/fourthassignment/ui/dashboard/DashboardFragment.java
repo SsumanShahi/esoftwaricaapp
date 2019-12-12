@@ -30,9 +30,10 @@ import com.suman.fourthassignment.ui.home.HomeFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardFragment extends Fragment implements View.OnClickListener{
+public class DashboardFragment extends Fragment implements RadioGroup.OnCheckedChangeListener, View.OnClickListener{
 
     private EditText fullname, age,address;
+    private String fname,Address,Gender, Age;
     private Button btnadd;
     private RadioGroup rdgroup;
     private RadioButton male, female, other;
@@ -55,6 +56,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
         other = view.findViewById(R.id.other);
 
         btnadd.setOnClickListener(this);
+        rdgroup.setOnCheckedChangeListener(this);
 
 
         return view;
@@ -63,37 +65,79 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        if (TextUtils.isEmpty(fullname.getText())){
-            fullname.setError("Please enter full name");
-            fullname.requestFocus();
-            return;
-        }
-        else if(TextUtils.isEmpty(age.getText())){
-            age.setError("Please enter age");
-            age.requestFocus();
-            return;
-        }
-        else if(TextUtils.isEmpty(address.getText())){
-            address.setError("Please enter address");
-            address.requestFocus();
-            return;
-        }
+
 
         if(v.getId() == R.id.btnadd)
         {
-            String fname, Age, Address;
+
             fname = fullname.getText().toString();
             Age = age.getText().toString();
             Address = address.getText().toString();
-
-            final List<Contacts> contactsList = new ArrayList<>();
-
-           // contactsList.add(fullname.getText().toString());
-
-            Toast.makeText(getContext(), "Student Details is Added", Toast.LENGTH_SHORT).show();
+            if(validate()){
+                MainActivity.st.add(new Contacts(fname,Address,Gender,Age));
+                Toast.makeText(getContext(), "Student Details is Added", Toast.LENGTH_SHORT).show();
+            }
 
         }
 
 
+    }
+
+    private boolean validate() {
+
+        if(TextUtils.isEmpty(fname))
+        {
+            fullname.setError("Please enter a name");
+            fullname.requestFocus();
+            return false;
+        }
+        if(TextUtils.isEmpty(Age))
+        {
+            age.setError("Please enter age");
+            age.requestFocus();
+            return false;
+        }
+
+        if(!TextUtils.isDigitsOnly(Age))
+        {
+            age.setError("Please enter age");
+            age.requestFocus();
+            return false;
+        }
+
+        if(TextUtils.isEmpty(Address))
+        {
+            address.setError("Please enter an address");
+            address.requestFocus();
+            return false;
+        }
+
+
+
+        if(TextUtils.isEmpty(Gender))
+        {
+            Toast.makeText(getContext(), "Please select a gender", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return  true;
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int i) {
+        if(i== R.id.male)
+        {
+            Gender="Male";
+            //Toast.makeText(this, "Male", Toast.LENGTH_SHORT).show();
+        }
+        if(i == R.id.female)
+        {
+            Gender = "Female";
+            //Toast.makeText(this, "Female", Toast.LENGTH_SHORT).show();
+        }
+        if(i== R.id.other)
+        {
+            Gender ="Other";
+            //Toast.makeText(this, "Other", Toast.LENGTH_SHORT).show();
+        }
     }
 }

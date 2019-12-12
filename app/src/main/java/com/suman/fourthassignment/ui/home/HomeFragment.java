@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.suman.fourthassignment.MainActivity;
 import com.suman.fourthassignment.R;
 import com.suman.fourthassignment.ui.Contacts;
 import com.suman.fourthassignment.ui.ContactsAdapter;
@@ -20,6 +21,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recycleview;
+    List<Contacts>contactsList = new ArrayList<>();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -29,14 +31,19 @@ public class HomeFragment extends Fragment {
 
         recycleview = view.findViewById(R.id.recycleview);
 
-        List<Contacts>contactsList = new ArrayList<>();
-        contactsList.add(new Contacts("Suman Shahi","nakhu","male","23",R.drawable.male, "Delete"));
-        contactsList.add(new Contacts("Symon Shahi","nakhu","male","21",R.drawable.male, "Delete"));
-        contactsList.add(new Contacts("Manjita Shahi","nakhu","female","23",R.drawable.female, "Delete"));
-        ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(), contactsList);
-        recycleview.setAdapter(contactsAdapter);
-        recycleview.setLayoutManager(new LinearLayoutManager(getContext()));
+       if(MainActivity.st.isEmpty()){
+           MainActivity.st.add(new Contacts("Suman Shahi","Nakkhu","Male","23"));
+           MainActivity.st.add(new Contacts("Sangita Karki","Buspark","Female","22"));
 
-        return view;
+           ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(), MainActivity.st);
+           recycleview.setLayoutManager(new LinearLayoutManager(getContext()));
+           recycleview.setAdapter(contactsAdapter);
+       }     else {
+           ContactsAdapter contactsAdapter1 = new ContactsAdapter(getContext(),MainActivity.st);
+           recycleview.setLayoutManager(new LinearLayoutManager(getContext()));
+           recycleview.setAdapter(contactsAdapter1);
+       }
+
+               return view;
     }
 }

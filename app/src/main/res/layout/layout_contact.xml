@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,64 +19,75 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="312dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/male" />
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorGrey"
+        >
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="232dp"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/stimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="244dp"
-        android:text="Age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:layout_width="258dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
 
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="220dp"
-        android:text="Address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/stfullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="" />
 
-    <TextView
-        android:id="@+id/gen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="43dp"
-        android:text="Gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/stdelete"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_alignTop="@+id/stfullname"
+                android:layout_marginLeft="140dp"
+                android:layout_toRightOf="@id/stfullname"
+                android:src="@drawable/ic_delete_black_24dp"
+                android:text="Delete" />
 
-    <Button
-        android:id="@+id/btndelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="33dp"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/st_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stfullname"
+                android:layout_marginTop="10dp"
+                android:text="" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/staddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/st_age"
+                android:layout_marginTop="10dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/stgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/staddress"
+                android:layout_alignTop="@+id/staddress"
+                android:layout_marginLeft="140dp"
+                android:layout_toRightOf="@id/staddress"
+                android:text="Female" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
